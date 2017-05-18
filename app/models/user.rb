@@ -3,10 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
-  after_initialize :set_defaults, unless: :persisted?
+  has_many :posts
+  has_many :comments
 
-  def set_defaults
-    self.upvotes = 0
-    self.downvotes = 0
-  end
 end
