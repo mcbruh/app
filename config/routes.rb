@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  as :user do
+    get "/users/:id", to: "devise/sessions#show"
+  end
+
   resources :ingredients
   resources :recipes, only: [:show, :index] do
     resources :reviews
@@ -21,6 +25,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'sessions#welcome'
-  get '/users/:id', to: "users/sessions#new"
+  get '/users/:id', to: "users/sessions#new", as: "user"
 
 end
