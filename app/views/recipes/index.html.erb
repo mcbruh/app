@@ -1,0 +1,7 @@
+Hi <%= @user.username %>
+
+<br><br>
+
+<% if user_signed_in? %>
+	<%= link_to "Add your recipe", new_recipe_path %>
+<% end %>
